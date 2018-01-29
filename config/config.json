@@ -1,0 +1,29 @@
+{
+  "development": {
+
+    "username": "robertzobrist",
+    "password": "javascript",
+    "database": "robertzobrist",
+    "host": "localhost",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "test": {
+
+    "username": "robertzobrist",
+    "password": "javascript",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL",
+    "username": "robertzobrist",
+    "password": "javascript",
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "port": 5432,
+    "dialect": "postgres"
+  }
+}
