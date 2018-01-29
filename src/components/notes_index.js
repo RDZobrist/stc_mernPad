@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import  { fetchNotes } from '../actions';
+
 import _ from 'lodash';
 class NotesIndex extends Component  {
     componentDidMount(){
@@ -12,7 +14,7 @@ class NotesIndex extends Component  {
        return _.map(this.props.notes, note => {
            return (
                <li className="list-group-item" key={note.id}>
-                    {note.category}  
+                    {note.body}  
                </li>
            )
        })
@@ -21,7 +23,11 @@ class NotesIndex extends Component  {
     render(){
         return(
 
-            <div>
+            <div><div className="text-xs-right">
+            <Link className="btn btn-primary" to="/postanote">
+            Add a Note
+            </Link>
+            </div>
                 <h3>Notes</h3>
                 <ul className="list-group">
                 {this.renderNotes()}

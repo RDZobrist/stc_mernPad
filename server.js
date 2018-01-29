@@ -37,6 +37,10 @@ app.get('/notes', function (req, res) {
     })
 }
 );
+app.get('/postanote', (req, res) =>{
+    res.sendFile(__dirname + "/public/index.html");
+
+})
 app.get('/test', (req, res) =>{
     let uuid = uuidv1();
         db.Note.create({

@@ -5,8 +5,7 @@
   "main": "index.js",
   "repository": "https://rdzobrist@bitbucket.org/rdzobrist/stc_mern_notepad.git",
   "scripts": {
-    "start": "webpack -p && node server.js",
-    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js"
+    "start": "webpack -p && node server.js"
   },
   "author": "Robert Zobrist",
   "license": "ISC",
@@ -17,11 +16,9 @@
     "babel-preset-react": "^6.1.18",
     "chai": "^3.5.0",
     "chai-jquery": "^2.0.0",
-    "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
-    "react-addons-test-utils": "^0.14.7",
-    "webpack": "^1.12.9"
+    "react-addons-test-utils": "^0.14.7"
   },
   "dependencies": {
     "axios": "^0.17.1",
@@ -30,6 +27,7 @@
     "express": "^4.16.2",
     "lodash": "^4.17.4",
     "morgan": "^1.9.0",
+    "node-sass": "^4.7.2",
     "pg": "^7.4.1",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
@@ -37,9 +35,12 @@
     "react-router": "^2.0.1",
     "react-router-dom": "^4.0.0",
     "redux": "^3.0.4",
+    "redux-form": "6.6.3",
     "redux-promise": "^0.5.3",
+    "sass-loader": "^6.0.6",
     "sequelize": "^4.32.2",
-    "uuid": "^3.2.1"
+    "uuid": "^3.2.1",
+    "webpack": "^3.10.0"
   },
   "private": false
 }
