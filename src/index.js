@@ -7,7 +7,7 @@ import promise from 'redux-promise';
 
 
 import reducers from './reducers';
-
+import NotesIndex from './components/notes_index';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -16,8 +16,7 @@ ReactDOM.render(
     <BrowserRouter>
     <div>
       <Route path="/" component={NotesIndex} />
-      <Route path="/notes/:id" component={ NoteDetail } />
-      <Route path="/notes/new" component={ PostNewNote } />
+   
       </div>
     </BrowserRouter>
   </Provider>
