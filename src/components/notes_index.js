@@ -22,9 +22,9 @@ class NotesIndex extends Component  {
 
     render(){
         return(
-
-            <div><div className="text-xs-right">
-            <Link className="btn btn-primary" to="/postanote">
+            <div className="container add-note-container">
+            <div>
+            <Link className="btn btn-primary float-right" to="/postanote">
             Add a Note
             </Link>
             </div>

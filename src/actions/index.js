@@ -9,3 +9,12 @@ export function fetchNotes () {
         payload: request
     }
 }
+
+export function createNote () {
+    const request = axios.post("/");
+
+    return {
+        type: FETCH_NOTES,
+        payload: request
+    }
+}

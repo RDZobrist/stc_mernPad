@@ -7,7 +7,7 @@ import promise from 'redux-promise';
 import reducers from './reducers';
 import NotesIndex from './components/notes_index';
 import PostNote from './components/post_note';
-import '../style/style.sass';
+import './stylesheets/main.scss';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 

@@ -41,7 +41,7 @@ app.get('/postanote', (req, res) =>{
     res.sendFile(__dirname + "/public/index.html");
 
 })
-app.get('/test', (req, res) =>{
+app.post('/test', (req, res) =>{
     let uuid = uuidv1();
         db.Note.create({
         title: 'as;lkdfjsdlk',
@@ -83,24 +83,7 @@ app.get("/", function (req, res) {
    
     res.sendFile(__dirname + "public/index.html");
 });
-// success Route. This will redirect the user to our rendered React application
-// app.get("/success", function(req, res) {
-//   res.sendFile(__dirname + "/public/success.html");
-// });
-// -------------------------------------------------
-// Syncing our sequelize models and then starting our Express app
-// // =============================================================
 
-// pool.connect((err, db, done) => {
-//     if (err) {
-//         return console.log(err);
-
-//     } else (db.query('SELECT * from stc_mern_notepads', (err, table) => {
-//         done();
-//         if (err) { console.log(err) }
-//         else { console.log(table) }
-//     }))
-// });
 
 // -------------------------------------------------
 // Starting the Express app
