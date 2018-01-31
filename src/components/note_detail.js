@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchNote } from '../actions'
+import { fetchNote } from '../actions';
+import { Link } from 'react-router-dom';
+import NotesIndex from './notes_index';
 class NoteDetail extends Component {
     componentDidMount(){
         // from react-router
@@ -15,6 +17,7 @@ class NoteDetail extends Component {
 
         return(
             <div className="container">
+            <Link to="/" Component={NotesIndex} >Back to Index</Link>
                 <h3>{note.title}</h3>
                 <h6>Category: {note.category}</h6>
                 <p>{note.body}</p>

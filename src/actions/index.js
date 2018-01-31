@@ -2,7 +2,7 @@ import axios from 'axios';
 export const FETCH_NOTES = 'fetch_notes';
 export const CREATE_NOTE = 'create_note';
 export const FETCH_NOTE = 'fetch_note';
-
+export const DELETE_NOTE = 'delete_note';
 export function fetchNotes () {
     const request = axios.get("/notes");
  
@@ -36,5 +36,14 @@ export function fetchNote (id) {
     return {
         type: FETCH_NOTE,
         payload: request
+    }
+}
+
+export function deleteNote (id) {
+    const request = axios.delete(`/note/${id}`).then(()=> callback());
+
+    return {
+        type: DELETE_NOTE,
+        payload: id
     }
 }

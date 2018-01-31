@@ -38,7 +38,21 @@ app.get('/notes', (req, res) => {
         res.json(entries)
     })
 });
+// -------------------------------------------------
+app.get("/note/:id", (req, res) => {
+    
+    db.Note.findOne({
+        where: {
+            id: req.params.id
+        }
+    }).then((entry) => {
+        res.send(entry);
+    }).catch(error => {
+        console.log(error)
+    })
+}
 
+)
 app.post('/new/note', (req, res) => {
     let uuid = uuidv1();
     db.Note.create({
@@ -56,20 +70,7 @@ app.post('/new/note', (req, res) => {
 });
 
 
-// -------------------------------------------------
-app.get("/note/:id",  (req, res) => {
-        db.Note.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then((entry) => {
-            res.send(entry);
-        }).catch(error => {
-            console.log(error)
-        })
-    }
 
-)
 
 
 

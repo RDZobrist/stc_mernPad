@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  { fetchNotes } from '../actions';
+import NoteDetail from './note_detail';
 
 import _ from 'lodash';
 class NotesIndex extends Component  {
@@ -12,11 +13,11 @@ class NotesIndex extends Component  {
     renderNotes(){
        
        return _.map(this.props.notes, note => {
+           console.log(note)
            return (
                
                <li className="list-group-item" key={note.id}>
-                    {note.body}  
-                    <div><Link to={`/note/${note.id}`} className="btn btn-secondary">View Note</Link></div>
+                    <Link to={`/note/${note.id}`}>{note.id}</Link>
                </li>
            )
        })
