@@ -6,7 +6,9 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import promise from 'redux-promise';
 import reducers from './reducers';
 import NotesIndex from './components/notes_index';
-import PostNote from './components/post_note';
+import NewNote from './components/new_note';
+import NoteDetail from './components/note_detail';
+
 import './stylesheets/main.scss';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
@@ -16,7 +18,8 @@ ReactDOM.render(
     <BrowserRouter>
     <div>
         <Switch>
-          <Route path="/postanote" component={PostNote} />
+          <Route path="/new/note" component={NewNote} />
+          <Route path="/note/:id" component={NoteDetail} />
           <Route path="/" component={NotesIndex} />
         </Switch>
     </div>

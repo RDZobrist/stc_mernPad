@@ -13,8 +13,10 @@ class NotesIndex extends Component  {
        
        return _.map(this.props.notes, note => {
            return (
+               
                <li className="list-group-item" key={note.id}>
                     {note.body}  
+                    <div><Link to={`/note/${note.id}`} className="btn btn-secondary">View Note</Link></div>
                </li>
            )
        })
@@ -24,7 +26,7 @@ class NotesIndex extends Component  {
         return(
             <div className="container add-note-container">
             <div>
-            <Link className="btn btn-primary float-right" to="/postanote">
+            <Link className="btn btn-primary float-right" to="/new/note">
             Add a Note
             </Link>
             </div>

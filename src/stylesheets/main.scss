@@ -1,3 +1,4 @@
+@import '/components/_noteForm.scss';
 html {
     background-color: #f0f0f0;
 }
@@ -7,6 +8,3 @@ html {
     float: right;
 }
 
-.add-note-container  {
-    margin: 2em auto;
-}

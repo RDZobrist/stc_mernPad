@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createNote } from '../actions';
+
 class PostNote extends Component {
     renderField(field){
         // nested obj destructure, pulling the touched and error props 
@@ -24,7 +27,10 @@ class PostNote extends Component {
     }
 
     onSubmit(values){
-        console.log(`inside onSubmit: ${values}`)
+        
+        this.props.createNote(values, () => {
+            this.props.history.push('/');
+        })
     }
 
     render(){
@@ -80,5 +86,7 @@ function validate(values) {
 export default reduxForm({
     validate,
     form: 'PostNoteForm'
-})(PostNote);
+})(
+    connect(null,{ createNote })(PostNote)
+);
 

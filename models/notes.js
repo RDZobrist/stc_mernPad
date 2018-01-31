@@ -27,7 +27,7 @@ module.exports = function (sequelize, DataTypes) {
         },
         emailAddress: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isEmail: {
                     msg: 'This is not an email address'
@@ -37,13 +37,13 @@ module.exports = function (sequelize, DataTypes) {
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             
 
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
 
         },
         guid: {

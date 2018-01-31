@@ -1,5 +1,3 @@
-
-
 // Include Server Dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -21,41 +19,36 @@ const PORT = process.env.PORT || 3010;
 // Run Morgan for Logging
 app.use(logger("dev"));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+app.use(bodyParser.json({
+    type: "application/vnd.api+json"
+}));
 
 app.use(express.static("public"));
 
-app.get('/notes', function (req, res) {
+app.get('/notes', (req, res) => {
     db.Note.findAll({
         limit: 15,
         where: {},
-        // order: [['id', 'DESC']]
+        order: [['id', 'ASC']]
     }).then((entries) => {
         res.json(entries)
     })
-}
-);
-app.get('/postanote', (req, res) =>{
-    res.sendFile(__dirname + "/public/index.html");
+});
 
-})
-app.post('/test', (req, res) =>{
+app.post('/new/note', (req, res) => {
     let uuid = uuidv1();
-        db.Note.create({
-        title: 'as;lkdfjsdlk',
-        body:'askjhdhaskjdhjk',
-        category: 'sports',
-        title:'alksdjaslk',
-        emailAddress: 'rdzobrist.dev@gmail.com',
-        username: 'kjdhfdksjfh',
-        password: 'hashedPWD',
+    db.Note.create({
+        title: req.body.title,
+        body: req.body.body,
+        category: req.body.category,
         guid: uuid,
-    }).then(savedNote=> {
+    }).then(savedNote => {
 
         console.log(savedNote);
-        res.json(savedNote)
         res.sendStatus(200);
     }).catch(error => {
         console.log(error)
@@ -64,32 +57,33 @@ app.post('/test', (req, res) =>{
 
 
 // -------------------------------------------------
-app.get("/api/saved", function (req, res) {
-
-    db.Note.findAll({
-        limit: 10,
-        where: {},
-        order: [['id', 'DESC']]
-    }).then( (entries) => {
-        res.json(entries)
-    })}
+app.get("/note/:id",  (req, res) => {
+        db.Note.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then((entry) => {
+            res.send(entry);
+        }).catch(error => {
+            console.log(error)
+        })
+    }
 
 )
-  
+
 
 
 // Main "/" Route. This will redirect the user to our rendered React application
-app.get("/", function (req, res) {
-   
+app.get("/",  (req, res) => {
+
     res.sendFile(__dirname + "public/index.html");
 });
 
 
-// -------------------------------------------------
-// Starting the Express app
+// Syncing our sequelize models and then starting our Express app
 // =============================================================
-    app.listen(PORT, function (req, res) {
-
+db.sequelize.sync({}).then(function () {
+    app.listen(PORT, function () {
         console.log("App listening on PORT " + PORT);
     });
-
+});
