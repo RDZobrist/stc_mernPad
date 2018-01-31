@@ -7,6 +7,8 @@ import promise from 'redux-promise';
 import reducers from './reducers';
 import NotesIndex from './components/notes_index';
 import NewNote from './components/new_note';
+import EditNote from './components/edit_note'
+
 import NoteDetail from './components/note_detail';
 
 import './stylesheets/main.scss';
@@ -19,6 +21,8 @@ ReactDOM.render(
     <div>
         <Switch>
           <Route path="/new/note" component={NewNote} />
+          <Route path="/editnote/:id" component={EditNote} />
+
           <Route path="/note/:id" component={NoteDetail} />
           <Route path="/" component={NotesIndex} />
         </Switch>

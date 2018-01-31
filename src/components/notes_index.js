@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  { fetchNotes } from '../actions';
 import NoteDetail from './note_detail';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import _ from 'lodash';
 class NotesIndex extends Component  {
     componentDidMount(){
@@ -17,13 +17,18 @@ class NotesIndex extends Component  {
            return (
                
                <li className="list-group-item" key={note.id}>
-                    <Link to={`/note/${note.id}`}>{note.id}</Link>
+                    <Link to={`/note/${note.id}`}>{note.title}</Link>
                </li>
            )
        })
     }
 
     render(){
+        const transitionOptions = {
+            transitionName: 'fade',
+            transitionEntertimeout: 500,
+            transitionLeaveTimeout: 500
+        }
         return(
             <div className="container add-note-container">
             <div>
@@ -33,7 +38,9 @@ class NotesIndex extends Component  {
             </div>
                 <h3>Notes</h3>
                 <ul className="list-group">
-                {this.renderNotes()}
+                {/* <ReactCSSTransitionGroup> */}
+                   {this.renderNotes()}
+                {/* </ReactCSSTransitionGroup> */}
                 </ul>
             </div>
         )

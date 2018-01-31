@@ -1,4 +1,5 @@
-import { FETCH_NOTES, FETCH_NOTE, DELETE_NOTE } from '../actions';
+import { FETCH_NOTES, FETCH_NOTE, DELETE_NOTE, EDIT_NOTE
+ } from '../actions';
 import _ from 'lodash';
 
 
@@ -11,14 +12,18 @@ export default function(state={}, action) {
             };
         case FETCH_NOTES:
             return _.mapKeys(action.payload.data, 'id');
+
+        case DELETE_NOTE:
+            // if id is in state obj, omit and return new object with that row deleted
+            return _.omit(state, action.payload);
+
+        case EDIT_NOTE:
+            return { ...state};
+
         default:
             return state;
 
     
-        case DELETE_NOTE:
-        // if id is in state obj, omit and return new object with that row deleted
-            return _.omit(state, action.payload);
-            
-            }
                 
     }
+}

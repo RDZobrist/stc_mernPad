@@ -53,6 +53,24 @@ app.get("/note/:id", (req, res) => {
 }
 
 )
+
+
+app.delete("/note/:id", (req, res) => {
+
+    db.Note.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then((entry) => {
+        console.log(entry.id)
+        res.sendStatus(200)
+    }).catch(error => {
+        console.log(error)
+    })
+}
+
+)
+
 app.post('/new/note', (req, res) => {
     let uuid = uuidv1();
     db.Note.create({
@@ -69,6 +87,22 @@ app.post('/new/note', (req, res) => {
     })
 });
 
+
+app.put('/editnote/:id', (req, res) => {
+console.log('in the route ', req.body)
+    db.Note.update({
+        title: req.body.title,
+        body: req.body.body,
+        category: req.body.category
+    }, {
+        where: {
+            id: req.body.id
+        }
+    }).then((updatedNote) => {
+        console.log(updatedNote);
+        res.sendStatus(200);
+    })
+})
 
 
 
