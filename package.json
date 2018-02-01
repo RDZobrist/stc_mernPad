@@ -5,7 +5,8 @@
   "main": "index.js",
   "repository": "https://rdzobrist@bitbucket.org/rdzobrist/stc_mern_notepad.git",
   "scripts": {
-    "start": "webpack -p && node server.js"
+"postinistall": "webpack -w",
+    "start": "node server.js"
   },
   "author": "Robert Zobrist",
   "license": "ISC",
