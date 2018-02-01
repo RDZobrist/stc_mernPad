@@ -11,7 +11,13 @@ class NotesIndex extends Component  {
     }
 
     renderNotes(){
-       
+       if(!note){
+          
+               return(
+                   <div>No saved notes...</div>
+               )
+           
+       }
        return _.map(this.props.notes, note => {
            return (
                <div>

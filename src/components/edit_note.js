@@ -86,7 +86,7 @@ class EditNote extends Component {
                 <Link to="/" className="btn float-right btn-danger cancel-button">Cancel</Link>
                     </div> </div>
             </form>
-            </div>
+           </div>
         )
     }
 }
