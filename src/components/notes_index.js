@@ -13,12 +13,13 @@ class NotesIndex extends Component  {
     renderNotes(){
        
        return _.map(this.props.notes, note => {
-           console.log(note)
            return (
+               <div>
                
                <li className="list-group-item" key={note.id}>
                     <Link to={`/note/${note.id}`}>{note.title}</Link>
                </li>
+               </div>
            )
        })
     }
@@ -36,7 +37,8 @@ class NotesIndex extends Component  {
             Add a Note
             </Link>
             </div>
-                <h3>Notes</h3>
+                <h3>Your Notes</h3>
+                <thead>Note Title</thead>
                 <ul className="list-group">
                 {/* <ReactCSSTransitionGroup> */}
                    {this.renderNotes()}

@@ -13,12 +13,13 @@ const db = require('./models');
 
 // Create Instance of Express
 const app = express();
-// Sets an initial port. We'll use this later in our listener
+// Sets an initial port
 const PORT = process.env.PORT || 3010;
 
 // Run Morgan for Logging
+app.use
 app.use(logger("dev"));
-app.use(bodyParser.json());
+app.use(bodyParser.json({type: '*/*'}));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -29,6 +30,10 @@ app.use(bodyParser.json({
 
 app.use(express.static("public"));
 
+
+// ++++++++++++++++++++++++++++++
+// .....__ Notes API __..........
+// ++++++++++++++++++++++++++++++
 app.get('/notes', (req, res) => {
     db.Note.findAll({
         limit: 15,
@@ -38,7 +43,7 @@ app.get('/notes', (req, res) => {
         res.json(entries)
     })
 });
-// -------------------------------------------------
+
 app.get("/note/:id", (req, res) => {
     
     db.Note.findOne({
@@ -89,7 +94,6 @@ app.post('/new/note', (req, res) => {
 
 
 app.put('/editnote/:id', (req, res) => {
-console.log('in the route ', req.body)
     db.Note.update({
         title: req.body.title,
         body: req.body.body,
@@ -99,10 +103,14 @@ console.log('in the route ', req.body)
             id: req.body.id
         }
     }).then((updatedNote) => {
-        console.log(updatedNote);
+        console.log('this is the updated note: ', updatedNote);
         res.sendStatus(200);
     })
 })
+
+// ++++++++++++++++++++++++++++++++++++++++
+// .......... __ AUTH API __ ..............
+// ++++++++++++++++++++++++++++++++++++++++
 
 
 

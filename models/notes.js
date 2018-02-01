@@ -25,34 +25,6 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             }
         },
-        emailAddress: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            validate: {
-                isEmail: {
-                    msg: 'This is not an email address'
-                }
-            }
-
-        },
-        username: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            
-
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: true,
-
-        },
-        guid: {
-            type: DataTypes.UUID,
-            allowNull: false,
-        
-            
-            
-        },
         createdAt: {
             type: DataTypes.DATE,
             default: Date.now(),
@@ -69,9 +41,17 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
 
-    },
+    });
 
-    );
+    Note.associate = function (models) {
+        // We're saying that a Note  should belong to a User
+        // A Post can't be created without a User due to the foreign key constraint
+        Note.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
     return Note;
 };
 

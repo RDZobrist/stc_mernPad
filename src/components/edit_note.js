@@ -27,11 +27,11 @@ class EditNote extends Component {
     }
 
     onSubmit(values) {
+        
  
-if(!this.props.location.pathname[12 || 13]){
-    values.id = this.props.location.pathname[10] + this.props.location.pathname[11];
-    console.dir(values)
-    this.props.editNote(values, () => {
+        if(!this.props.location.pathname[12 || 13]){
+        values.id = this.props.location.pathname[10] + this.props.location.pathname[11];
+        this.props.editNote(values, () => {
         this.props.history.push('/')
     })
 }
