@@ -35,12 +35,6 @@ app.use(express.static("public"));
 router(app);
 
 
-// Main "/" Route. This will redirect the user to our rendered React application
-app.get("*",  (req, res) => {
-
-    res.sendFile(__dirname + "public/index.html");
-});
-
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
