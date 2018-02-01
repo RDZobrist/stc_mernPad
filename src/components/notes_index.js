@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  { fetchNotes } from '../actions';
 import NoteDetail from './note_detail';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { CSSTransitionGroup } from 'react-transition-group' 
 import _ from 'lodash';
 class NotesIndex extends Component  {
     componentDidMount(){
@@ -16,34 +16,41 @@ class NotesIndex extends Component  {
            return (
                <div>
                
-               <li className="list-group-item" key={note.id}>
-                    <Link to={`/note/${note.id}`}>{note.title}</Link>
-               </li>
+               <tr className="list-group-item" key={note.id}>
+                       <td><Link to={`/note/${note.id}`}>{note.title}</Link></td>
+               </tr>
                </div>
            )
        })
     }
 
     render(){
-        const transitionOptions = {
-            transitionName: 'fade',
-            transitionEntertimeout: 500,
-            transitionLeaveTimeout: 500
-        }
+        <CSSTransitionGroup
+            transitionName="index_fade_in"
+            transitionAppear={true}
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}>
+            <h1>Fading at Initial Mount</h1>
+        </CSSTransitionGroup>
         return(
-            <div className="container add-note-container">
             <div>
-            <Link className="btn btn-primary float-right" to="/new/note">
-            Add a Note
+                <h3 className="text-center">Index</h3>
+
+            <table className="table table-hover">
+       <thead>
+                
+                <tr>Title</tr>
+                <tbody className="list-group">
+                   {this.renderNotes()}
+                </tbody>
+         </thead>
+            </table>
+            <div>
+                <Link className="btn btn-success float-right" to="/new/note">
+                    Add a Note
             </Link>
             </div>
-                <h3>Your Notes</h3>
-                <thead>Note Title</thead>
-                <ul className="list-group">
-                {/* <ReactCSSTransitionGroup> */}
-                   {this.renderNotes()}
-                {/* </ReactCSSTransitionGroup> */}
-                </ul>
             </div>
         )
     }

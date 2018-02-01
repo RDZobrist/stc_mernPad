@@ -8,7 +8,7 @@ import reducers from './reducers';
 import NotesIndex from './components/notes_index';
 import NewNote from './components/new_note';
 import EditNote from './components/edit_note'
-
+import App from './components/app';
 import NoteDetail from './components/note_detail';
 
 import './stylesheets/main.scss';
@@ -22,9 +22,8 @@ ReactDOM.render(
         <Switch>
           <Route path="/new/note" component={NewNote} />
           <Route path="/editnote/:id" component={EditNote} />
-
           <Route path="/note/:id" component={NoteDetail} />
-          <Route path="/" component={NotesIndex} />
+          <Route path="/" component={App} />
         </Switch>
     </div>
     </BrowserRouter>

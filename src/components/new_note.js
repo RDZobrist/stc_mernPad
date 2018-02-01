@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createNote } from '../actions';
 
+
 class PostNote extends Component {
     renderField(field){
         // nested obj destructure, pulling the touched and error props 
@@ -11,6 +12,7 @@ class PostNote extends Component {
         // ternary operator to determine className for validation styling 
         const className = `form-group ${touched && error ? 'has-danger' : ''}`;
        return(
+           
            <div className={className}>
            <label>{field.label}</label>
                <input
@@ -23,6 +25,7 @@ class PostNote extends Component {
                { touched ? error : ''}
                </div>
            </div>
+           
        )
     }
 
@@ -38,8 +41,19 @@ class PostNote extends Component {
         // handleSubmit prop inherited from redux-form 
         const { handleSubmit } = this.props;
         return(
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this)) }>
-                     <Field 
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className="row">
+                <div className="container-fluid">
+                    <div className="jumbotron">
+                        <h2 className="text-center">Create a Note</h2>
+                        <p className="text-center">
+                            <em><small>Please fill out all fields</small></em>
+                        </p>
+                    </div>
+                </div>
+                </div>
+          
+                   <Field 
                     label="Title"
                     name="title"
                     component={this.renderField}
@@ -57,9 +71,10 @@ class PostNote extends Component {
                     
                     />
                     </div>
-                    <button type="submit" className="btn btn-primary submit-button" >Submit</button>
+                    <button type="submit" className="btn btn-success submit-button" >Submit</button>
                     <Link to="/" className="btn float-right btn-danger cancel-button">Cancel</Link>
-            </form>
+          </form>
+           
         )
     }
 }

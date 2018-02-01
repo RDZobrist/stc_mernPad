@@ -49,7 +49,21 @@ class EditNote extends Component {
         // handleSubmit prop inherited from redux-form 
         const { handleSubmit } = this.props;
         return (
+            <div>
+            <div className="row">
+                <div className="container-fluid">
+                    <div className="jumbotron">
+                        <h2 className="text-center">Edit your Note</h2>
+                        <p className="text-center">
+                            <em><small>Please complete all fields, even if not editing that choice</small></em>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <form onSubmit={handleSubmit(this.onSubmitEdit.bind(this))}>
+                <div className="container container-edit_note">
+
+                <div className="form-group">
                 <Field
                     label="Title"
                     name="title"
@@ -68,9 +82,11 @@ class EditNote extends Component {
 
                     />
                 </div>
-                <button type="submit" className="btn btn-primary submit-button" >Submit The Edit</button>
+                <button type="submit" className="btn btn-success submit-button" >Submit The Edit</button>
                 <Link to="/" className="btn float-right btn-danger cancel-button">Cancel</Link>
+                    </div> </div>
             </form>
+            </div>
         )
     }
 }

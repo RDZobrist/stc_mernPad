@@ -39,19 +39,40 @@ class NoteDetail extends Component {
         }
 
         return(
+            <div>
+                <div className="row">
+                    <div className="container-fluid">
+                        <div className="jumbotron">
+                            <h2 className="text-center">Note in Detail</h2>
+                            <p className="text-center">
+                                <em><small>Where you have full control of the note</small></em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             <div className="container">
-            <Link to="/" Component={NotesIndex} >Back to Index</Link>
-                <Link to={`/editnote/${note.id}`} Component={EditNote} >Edit Note</Link>
+            <div className="card card-default">
+                    <div className="card-title text-center">Note in detail</div>
+                    <div className="card-body">
+           
+                <h4>Title of Note: {note.title}</h4>
+                        <h6>Category: <small>{note.category}</small></h6>
+                        <h6>Body: <small>{note.body}</small></h6>
+                </div>
+                <div className="container note-detail-links">
+                <Link to="/" Component={NotesIndex} id="back-to-index-link" className="btn btn-outline-primary">Back to Index</Link>
+                        <Link to={`/editnote/${note.id}`} Component={EditNote} className="btn btn-outline-secondary" id="edit-note-link">Edit Note</Link>
                 {/* <button className="btn btn-warning pull-xs-right" onClick={this.onEditClick.bind(this)}>Edit Note</button> */}
-              
 
-            <button 
-            className= "btn btn-danger pull-xs-right"
-            onClick={this.onDeleteClick.bind(this)}>
-            Delete Note</button>
-                <h3>{note.title}</h3>
-                <h6>Category: {note.category}</h6>
-                <p>{note.body}</p>
+
+                <button
+                    className="btn btn-outline-danger "
+                    id="delete-note-link"
+                    onClick={this.onDeleteClick.bind(this)}>
+                    Delete Note</button>
+                </div>
+            </div>
+            </div>
             </div>
         )
     }
