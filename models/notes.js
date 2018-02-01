@@ -43,15 +43,14 @@ module.exports = function (sequelize, DataTypes) {
 
     });
 
-    Note.associate = function (models) {
-        // We're saying that a Note  should belong to a User
-        // A Post can't be created without a User due to the foreign key constraint
-        Note.belongsTo(models.User, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // Note.associate = function (models) {
+    //     // saying a Note should belong to a User
+    //     Note.belongsTo(models.User, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return Note;
 };
 

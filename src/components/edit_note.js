@@ -26,10 +26,16 @@ class EditNote extends Component {
         )
     }
 
-    onSubmit(values) {
-        
+    onSubmitEdit(values) {
+       
+        if(this.props.location.pathname[10] && !this.props.location.pathname[11]){
+            values.id = this.props.location.pathname[10];
+            this.props.editNote(values, () => {
+                this.props.history.push('/')
+            })
+        }
  
-        if(!this.props.location.pathname[12 || 13]){
+        if (this.props.loaction.pathname[10] && this.props.location.pathname[11] && !this.props.location.pathname[12]){
         values.id = this.props.location.pathname[10] + this.props.location.pathname[11];
         this.props.editNote(values, () => {
         this.props.history.push('/')
@@ -43,7 +49,7 @@ class EditNote extends Component {
         // handleSubmit prop inherited from redux-form 
         const { handleSubmit } = this.props;
         return (
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <form onSubmit={handleSubmit(this.onSubmitEdit.bind(this))}>
                 <Field
                     label="Title"
                     name="title"
